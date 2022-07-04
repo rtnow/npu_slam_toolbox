@@ -15,7 +15,7 @@ slam_toolbox:
     base_frame: base_link
     #修改，有car是仿真
     #scan_topic: /car/scan
-    scan_topic: /scan
+    scan_topic: /car/scan
     mode: mapping #localization
 
     # if you'd like to immediately start continuing a map at a given pose
@@ -28,6 +28,7 @@ slam_toolbox:
     debug_logging: false
     throttle_scans: 1
     transform_publish_period: 0.02 #if 0 never publishes odometry
+    #地图更新频率
     map_update_interval: 1.0
     resolution: 0.05
     max_laser_range: 20.0 #for rastering images
@@ -38,15 +39,17 @@ slam_toolbox:
     enable_interactive_mode: true
 
     # General Parameters
+    #真实时true，仿真时设为false较好
     use_scan_matching: true
+    #使用扫描端点的重心来定义扫描之间的距离
     use_scan_barycenter: true
-    minimum_travel_distance: 0.5
-    minimum_travel_heading: 0.5
-    scan_buffer_size: 10
+    minimum_travel_distance: 0.1
+    minimum_travel_heading: 0.2
+    scan_buffer_size: 200
     scan_buffer_maximum_scan_distance: 20.0
     link_match_minimum_response_fine: 0.1  
-    link_scan_maximum_distance: 1.5
-    loop_search_maximum_distance: 3.0
+    link_scan_maximum_distance: 3.5
+    loop_search_maximum_distance: 4.0
     do_loop_closing: true 
     loop_match_minimum_chain_size: 10           
     loop_match_maximum_variance_coarse: 3.0  
@@ -54,7 +57,7 @@ slam_toolbox:
     loop_match_minimum_response_fine: 0.45
 
     # Correlation Parameters - Correlation Parameters
-    correlation_search_space_dimension: 0.5
+    correlation_search_space_dimension: 0.3
     correlation_search_space_resolution: 0.01
     correlation_search_space_smear_deviation: 0.1 
 
